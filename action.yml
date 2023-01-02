@@ -1,0 +1,118 @@
+name: 'Ermetic'
+description: 'Ermetic actions'
+branding:
+  color: 'purple'
+  icon: 'shield'
+
+inputs:
+  api-token:
+    description: ''
+    required: true
+  api-url:
+    description: ''
+    required: true
+  code-branch:
+    default: ${{ github.event_name != 'pull_request' && github.ref_name || github.head_ref }}
+    description: ''
+    required: false
+  code-commit-hash:
+    default: ${{ github.sha }}
+    description: ''
+    required: false
+  code-commit-user:
+    default: ${{ github.actor }}
+    description: ''
+    required: false
+  code-repository-url:
+    default: ${{ github.server_url }}/${{ github.repository }}
+    description: ''
+    required: false
+  exclude-paths:
+    description: ''
+    required: false
+  exclude-policies:
+    description: ''
+    required: false
+  fail-on-min-severity:
+    description: ''
+    required: false
+  logs:
+    default: 'false'
+    description: ''
+    required: false
+  min-severity:
+    default: 'information'
+    description: ''
+    required: false
+  output-file-formats:
+    default: 'json'
+    description: ''
+    required: false
+  output-file-name:
+    default: 'results'
+    description: ''
+    required: false
+  output-path:
+    description: ''
+    required: false
+  paths:
+    description: ''
+    required: false
+  pipeline-run-id:
+    default: ${{ github.run_id }}
+    description: ''
+    required: false
+  pipeline-run-trigger:
+    default: ${{ github.event_name }}
+    description: ''
+    required: false
+  policies:
+    description: ''
+    required: false
+  silent:
+    default: 'false'
+    description: ''
+    required: false
+  types:
+    description: ''
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/ermetic/scanner:latest'
+  args:
+    - iac
+    - scan
+    - ${{ inputs.api-token && '--api-token'}}
+    - ${{ inputs.api-token }}
+    - ${{ inputs.api-url &&  '--api-url'}}
+    - ${{ inputs.api-url }}
+    - ${{ inputs.exclude-paths &&  '--exclude-paths'}}
+    - ${{ inputs.exclude-paths }}
+    - ${{ inputs.exclude-policies &&  '--exclude-policies'}}
+    - ${{ inputs.exclude-policies }}
+    - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
+    - ${{ inputs.fail-on-min-severity }}
+    - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
+    - ${{ inputs.min-severity &&  '--min-severity'}}
+    - ${{ inputs.min-severity }}
+    - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
+    - ${{ inputs.output-file-formats }}
+    - ${{ inputs.output-file-name &&  '--output-file-name'}}
+    - ${{ inputs.output-file-name }}
+    - ${{ inputs.output-path &&  '--output-path'}}
+    - ${{ inputs.output-path }}
+    - ${{ inputs.paths &&  '--paths'}}
+    - ${{ inputs.paths }}
+    - ${{ inputs.policies &&  '--policies'}}
+    - ${{ inputs.policies }}
+    - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
+    - ${{ inputs.types && '--types'}}
+    - ${{ inputs.types }}
+  env:
+    ERMETIC_CODE_BRANCH: ${{ inputs.code-branch }}
+    ERMETIC_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
+    ERMETIC_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
+    ERMETIC_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    ERMETIC_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
+    ERMETIC_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
