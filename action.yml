@@ -66,6 +66,10 @@ inputs:
     default: ${{ github.event_name }}
     description: ''
     required: false
+  pipeline-run-url:
+    default: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    description: ''
+    required: false
   policies:
     description: ''
     required: false
@@ -116,3 +120,4 @@ runs:
     ERMETIC_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
     ERMETIC_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
     ERMETIC_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
+    ERMETIC_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
