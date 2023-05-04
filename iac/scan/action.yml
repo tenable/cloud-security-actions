@@ -45,7 +45,6 @@ inputs:
     description: ''
     required: false
   output-file-formats:
-    default: 'json'
     description: ''
     required: false
   output-file-name:
@@ -53,6 +52,7 @@ inputs:
     description: ''
     required: false
   output-path:
+    default: '.'
     description: ''
     required: false
   paths:
@@ -83,10 +83,8 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/ermetic/scanner:latest'
+  image: 'Dockerfile'
   args:
-    - iac
-    - scan
     - ${{ inputs.api-token && '--api-token'}}
     - ${{ inputs.api-token }}
     - ${{ inputs.api-url &&  '--api-url'}}
@@ -118,6 +116,8 @@ runs:
     ERMETIC_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
     ERMETIC_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
     ERMETIC_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    ERMETIC_OUTPUT_FILE_NAME: ${{ inputs.output-file-name }}
+    ERMETIC_OUTPUT_PATH: ${{ inputs.output-path }}
     ERMETIC_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
     ERMETIC_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
     ERMETIC_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
