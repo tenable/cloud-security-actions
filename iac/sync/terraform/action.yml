@@ -1,4 +1,4 @@
-﻿name: 'Ermetic IaC Terraform Sync'
+﻿name: 'Ermetic IaC Sync Terraform'
 description: 'Sync IaC'
 branding:
   color: 'purple'
