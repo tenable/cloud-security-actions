@@ -1,0 +1,78 @@
+﻿name: 'Ermetic IaC Terraform Sync'
+description: 'Sync IaC'
+branding:
+  color: 'purple'
+  icon: 'shield'
+
+inputs:
+  api-token:
+    description: ''
+    required: true
+  api-url:
+    description: ''
+    required: true
+  code-branch:
+    default: ${{ github.event_name != 'pull_request' && github.ref_name || github.head_ref }}
+    description: ''
+    required: false
+  code-commit-hash:
+    default: ${{ github.sha }}
+    description: ''
+    required: false
+  code-commit-user:
+    default: ${{ github.actor }}
+    description: ''
+    required: false
+  code-repository-url:
+    default: ${{ github.server_url }}/${{ github.repository }}
+    description: ''
+    required: false
+  logs:
+    default: 'false'
+    description: ''
+    required: false
+  path:
+    description: ''
+    required: false
+  pipeline-run-id:
+    default: ${{ github.run_id }}
+    description: ''
+    required: false
+  pipeline-run-trigger:
+    default: ${{ github.event_name }}
+    description: ''
+    required: false
+  pipeline-run-url:
+    default: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    description: ''
+    required: false
+  silent:
+    default: 'false'
+    description: ''
+    required: false
+  state-file-path:
+    description: ''
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/ermetic/scanner:latest'
+  args:
+    - ${{ inputs.api-token && '--api-token'}}
+    - ${{ inputs.api-token }}
+    - ${{ inputs.api-url &&  '--api-url'}}
+    - ${{ inputs.api-url }}
+    - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
+    - ${{ inputs.path &&  '--path'}}
+    - ${{ inputs.path }}
+    - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
+    - ${{ inputs.state-file-path &&  '--state-file-path'}}
+    - ${{ inputs.state-file-path }}
+  env:
+    ERMETIC_CODE_BRANCH: ${{ inputs.code-branch }}
+    ERMETIC_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
+    ERMETIC_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
+    ERMETIC_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    ERMETIC_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
+    ERMETIC_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
+    ERMETIC_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
