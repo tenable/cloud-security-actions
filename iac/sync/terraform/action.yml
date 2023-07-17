@@ -58,6 +58,9 @@ runs:
   using: 'docker'
   image: 'docker://ghcr.io/ermetic/scanner:latest'
   args:
+    - iac
+    - sync
+    - terraform
     - ${{ inputs.api-token && '--api-token'}}
     - ${{ inputs.api-token }}
     - ${{ inputs.api-url &&  '--api-url'}}
