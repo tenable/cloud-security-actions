@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh
 
 ermetic iac scan "$@" --output-file-formats md
 trap "exit $?" EXIT
