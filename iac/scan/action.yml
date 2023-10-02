@@ -77,6 +77,10 @@ inputs:
     default: 'false'
     description: ''
     required: false
+  skip-code-commit-history:
+      default: 'false'
+      description: ''
+      required: false
   types:
     description: ''
     required: false

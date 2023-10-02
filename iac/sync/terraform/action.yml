@@ -50,6 +50,10 @@ inputs:
     default: 'false'
     description: ''
     required: false
+  skip-code-commit-history:
+      default: 'false'
+      description: ''
+      required: false
   state-file-path:
     description: ''
     required: false
