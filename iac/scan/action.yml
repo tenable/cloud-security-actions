@@ -1,7 +1,7 @@
-﻿name: 'Ermetic IaC Scan'
+﻿name: 'Tenable Cloud Security IaC Scan'
 description: 'Scan IaC'
 branding:
-  color: 'purple'
+  color: 'blue'
   icon: 'shield'
 
 inputs:
@@ -78,9 +78,9 @@ inputs:
     description: ''
     required: false
   skip-code-commit-history:
-      default: 'false'
-      description: ''
-      required: false
+    default: 'false'
+    description: ''
+    required: false
   types:
     description: ''
     required: false
@@ -113,6 +113,7 @@ runs:
     - ${{ inputs.policies &&  '--policies'}}
     - ${{ inputs.policies }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
+    - ${{ inputs.skip-code-commit-history != 'false' &&  '--skip-code-commit-history' || ''}}
     - ${{ inputs.types && '--types'}}
     - ${{ inputs.types }}
   env:

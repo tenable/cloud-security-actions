@@ -1,10 +1,10 @@
-# Ermetic GitHub Actions
+# Tenable Cloud Security GitHub Actions
 
-Use the Ermetic GitHub actions to scan your infrastructure-as-code (IaC) pipeline for security issues, and to sync from
+Use the Tenable Cloud Security GitHub actions to scan your infrastructure-as-code (IaC) pipeline for security issues, and to sync from
 Cloud to Code to trace your cloud resources and issues back to their code origins. Doing so can help you identify and
 remediate configuration issues before your cloud resources are deployed.
 
-<img alt="Ermetic" src="media/logo.svg" width="300" />
+<img alt="Tenable Cloud Security" src="media/logo.svg" width="300" />
 
 ## Infrastructure-as-Code GitHub Actions
 

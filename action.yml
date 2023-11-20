@@ -1,7 +1,7 @@
-name: 'Ermetic'
-description: 'Ermetic actions'
+name: 'Tenable Cloud Security'
+description: 'Tenable Cloud Security actions'
 branding:
-  color: 'purple'
+  color: 'blue'
   icon: 'shield'
 
 inputs:
