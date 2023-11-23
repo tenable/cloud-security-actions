@@ -1,7 +1,7 @@
-﻿name: 'Ermetic IaC Sync Terraform'
+﻿name: 'Tenable Cloud Security IaC Sync Terraform'
 description: 'Sync IaC'
 branding:
-  color: 'purple'
+  color: 'blue'
   icon: 'shield'
 
 inputs:
