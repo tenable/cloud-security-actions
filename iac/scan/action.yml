@@ -51,7 +51,7 @@ inputs:
     default: 'results'
     description: ''
     required: false
-  output-junit-test-prefix:
+  output-junit-test-name-prefix:
       default: ''
       description: ''
       required: false
