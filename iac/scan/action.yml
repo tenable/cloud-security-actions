@@ -106,6 +106,8 @@ runs:
     - ${{ inputs.output-file-formats }}
     - ${{ inputs.output-file-name &&  '--output-file-name'}}
     - ${{ inputs.output-file-name }}
+    - ${{ inputs.output-junit-test-name-prefix &&  '--output-junit-test-name-prefix'}}
+    - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.output-path &&  '--output-path'}}
     - ${{ inputs.output-path }}
     - ${{ inputs.paths &&  '--paths'}}
