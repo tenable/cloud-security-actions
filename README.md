@@ -1,14 +1,12 @@
-# Tenable Cloud Security GitHub Actions
-
-Use the Tenable Cloud Security GitHub actions to scan your infrastructure-as-code (IaC) pipeline for security issues, and to sync from
-Cloud to Code to trace your cloud resources and issues back to their code origins. Doing so can help you identify and
-remediate configuration issues before your cloud resources are deployed.
-
 <img alt="Tenable Cloud Security" src="media/logo.svg" width="300" />
 
-## Infrastructure-as-Code GitHub Actions
+# Tenable Cloud Security GitHub Actions
 
-**[Scan](iac/scan)** - Scan your IaC pipeline and analyze findings
+Use the actions below to shift-left and identify issues before resources are deployed.
 
-**[Sync](iac/sync/terraform)** - Sync from Cloud to Code to trace your cloud resources and issues back to their code
-origins
+**[IaC Scan](iac/scan)** - Scan your infrastructure-as-code (IaC) for security issues.
+
+**[IaC Sync](iac/sync/terraform)** - Sync the code associated with your cloud resources to trace those resources back to
+their origins (Cloud to Code)
+
+**[Container Image Scan](container-image/scan)** - Scan your container images for software vulnerabilities

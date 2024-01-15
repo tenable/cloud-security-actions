@@ -1,0 +1,112 @@
+﻿name: 'Tenable Cloud Security Container Scan'
+description: 'Scan Container Image'
+branding:
+  color: 'blue'
+  icon: 'shield'
+
+inputs:
+  api-token:
+    description: ''
+    required: true
+  api-url:
+    description: ''
+    required: true
+  code-branch:
+    default: ${{ github.event_name != 'pull_request' && github.ref_name || github.head_ref }}
+    description: ''
+    required: false
+  code-commit-hash:
+    default: ${{ github.sha }}
+    description: ''
+    required: false
+  code-commit-user:
+    default: ${{ github.actor }}
+    description: ''
+    required: false
+  code-repository-url:
+    default: ${{ github.server_url }}/${{ github.repository }}
+    description: ''
+    required: false
+  fail-on-min-severity:
+    description: ''
+    required: false
+  fail-on-min-cvss-score:
+    description: ''
+    required: false
+  logs:
+    default: 'false'
+    description: ''
+    required: false
+  min-severity:
+    description: ''
+    required: false
+  min-cvss-score:
+    description: ''
+    required: false
+  name:
+    description: ''
+    required: true
+  output-file-formats:
+    description: ''
+    required: false
+  output-file-name:
+    default: 'results'
+    description: ''
+    required: false
+  output-path:
+    default: '.'
+    description: ''
+    required: false
+  pipeline-run-id:
+    default: ${{ github.run_id }}
+    description: ''
+    required: false
+  pipeline-run-trigger:
+    default: ${{ github.event_name }}
+    description: ''
+    required: false
+  pipeline-run-url:
+    default: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    description: ''
+    required: false
+  silent:
+    default: 'false'
+    description: ''
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.api-token && '--api-token'}}
+    - ${{ inputs.api-token }}
+    - ${{ inputs.api-url &&  '--api-url'}}
+    - ${{ inputs.api-url }}
+    - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
+    - ${{ inputs.fail-on-min-severity }}
+    - ${{ inputs.fail-on-min-cvss-score &&  '--fail-on-min-cvss-score'}}
+    - ${{ inputs.fail-on-min-cvss-score }}
+    - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
+    - ${{ inputs.min-severity &&  '--min-severity'}}
+    - ${{ inputs.min-severity }}
+    - ${{ inputs.min-cvss-score &&  '--min-cvss-score'}}
+    - ${{ inputs.min-cvss-score }}
+    - ${{ inputs.name && '--name'}}
+    - ${{ inputs.name }}
+    - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
+    - ${{ inputs.output-file-formats }}
+    - ${{ inputs.output-file-name &&  '--output-file-name'}}
+    - ${{ inputs.output-file-name }}
+    - ${{ inputs.output-path &&  '--output-path'}}
+    - ${{ inputs.output-path }}
+    - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
+  env:
+    TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
+    TENABLE_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
+    TENABLE_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
+    TENABLE_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    TENABLE_OUTPUT_FILE_NAME: ${{ inputs.output-file-name }}
+    TENABLE_OUTPUT_PATH: ${{ inputs.output-path }}
+    TENABLE_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
+    TENABLE_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
+    TENABLE_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
