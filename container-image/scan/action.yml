@@ -69,6 +69,12 @@ inputs:
     default: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     description: ''
     required: false
+  registry-password:
+    description: ''
+    required: false
+  registry-username:
+    description: ''
+    required: false
   silent:
     default: 'false'
     description: ''
@@ -99,6 +105,10 @@ runs:
     - ${{ inputs.output-file-name }}
     - ${{ inputs.output-path &&  '--output-path'}}
     - ${{ inputs.output-path }}
+    - ${{ inputs.registry-password &&  '--registry-password'}}
+    - ${{ inputs.registry-password }}
+    - ${{ inputs.registry-username &&  '--registry-username'}}
+    - ${{ inputs.registry-username }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
   env:
     TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
