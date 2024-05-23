@@ -56,7 +56,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/ermetic/scanner:latest'
+  image: 'docker://tenable/cloud-security-scanner:latest'
   args:
     - iac
     - sync

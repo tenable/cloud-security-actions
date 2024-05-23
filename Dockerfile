@@ -1,4 +1,4 @@
-FROM ghcr.io/ermetic/scanner:latest
+FROM tenable/cloud-security-scanner:latest
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
