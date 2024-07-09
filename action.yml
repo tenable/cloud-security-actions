@@ -59,7 +59,11 @@ inputs:
     default: '.'
     description: ''
     required: false
+  path:
+    description: ''
+    required: false
   paths:
+    deprecationMessage: 'Use `path` instead'
     description: ''
     required: false
   pipeline-run-id:
@@ -110,8 +114,8 @@ runs:
     - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.output-path &&  '--output-path'}}
     - ${{ inputs.output-path }}
-    - ${{ inputs.paths &&  '--paths'}}
-    - ${{ inputs.paths }}
+    - ${{ inputs.path || inputs.paths &&  '--path'}}
+    - ${{ inputs.path || inputs.paths }}
     - ${{ inputs.policies &&  '--policies'}}
     - ${{ inputs.policies }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
