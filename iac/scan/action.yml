@@ -63,7 +63,7 @@ inputs:
     description: ''
     required: false
   paths:
-    deprecationMessage: '`paths` option will be removed in a future release. Please use `path` instead'
+    deprecationMessage: 'Use `path` instead'
     description: ''
     required: false
   pipeline-run-id:
