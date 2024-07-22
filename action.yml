@@ -15,6 +15,10 @@ inputs:
     default: ${{ github.event_name != 'pull_request' && github.ref_name || github.head_ref }}
     description: ''
     required: false
+  code-clone-path:
+    default: ${{ github.workspace }}
+    description: ''
+    required: false
   code-commit-hash:
     default: ${{ github.sha }}
     description: ''
@@ -59,7 +63,11 @@ inputs:
     default: '.'
     description: ''
     required: false
+  path:
+    description: ''
+    required: false
   paths:
+    deprecationMessage: 'Use `path` instead'
     description: ''
     required: false
   pipeline-run-id:
@@ -110,20 +118,21 @@ runs:
     - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.output-path &&  '--output-path'}}
     - ${{ inputs.output-path }}
-    - ${{ inputs.paths &&  '--paths'}}
-    - ${{ inputs.paths }}
+    - ${{ inputs.path || inputs.paths &&  '--path'}}
+    - ${{ inputs.path || inputs.paths }}
     - ${{ inputs.policies &&  '--policies'}}
     - ${{ inputs.policies }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
     - ${{ inputs.types && '--types'}}
     - ${{ inputs.types }}
   env:
-    ERMETIC_CODE_BRANCH: ${{ inputs.code-branch }}
-    ERMETIC_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
-    ERMETIC_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
-    ERMETIC_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
-    ERMETIC_OUTPUT_FILE_NAME: ${{ inputs.output-file-name }}
-    ERMETIC_OUTPUT_PATH: ${{ inputs.output-path }}
-    ERMETIC_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
-    ERMETIC_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
-    ERMETIC_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
+    TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
+    TENABLE_CODE_CLONE_PATH: ${{ inputs.code-clone-path }}
+    TENABLE_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
+    TENABLE_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
+    TENABLE_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    TENABLE_OUTPUT_FILE_NAME: ${{ inputs.output-file-name }}
+    TENABLE_OUTPUT_PATH: ${{ inputs.output-path }}
+    TENABLE_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
+    TENABLE_PIPELINE_RUN_TRIGGER: ${{ inputs.pipeline-run-trigger }}
+    TENABLE_PIPELINE_RUN_URL: ${{ inputs.pipeline-run-url }}
