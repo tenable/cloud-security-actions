@@ -114,7 +114,7 @@ runs:
     - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.output-path &&  '--output-path'}}
     - ${{ inputs.output-path }}
-    - ${{ inputs.path || inputs.paths &&  '--path'}}
+    - ${{ inputs.path && '--path' || inputs.paths && '--path'}}
     - ${{ inputs.path || inputs.paths }}
     - ${{ inputs.policies &&  '--policies'}}
     - ${{ inputs.policies }}
