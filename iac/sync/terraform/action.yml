@@ -15,10 +15,6 @@ inputs:
     default: ${{ github.event_name != 'pull_request' && github.ref_name || github.head_ref }}
     description: ''
     required: false
-  code-clone-path:
-    default: ${{ github.workspace }}
-    description: ''
-    required: false
   code-commit-hash:
     default: ${{ github.sha }}
     description: ''
@@ -77,7 +73,6 @@ runs:
     - ${{ inputs.state-file-path }}
   env:
     TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
-    TENABLE_CODE_CLONE_PATH: ${{ inputs.code-clone-path }}
     TENABLE_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
     TENABLE_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
     TENABLE_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
