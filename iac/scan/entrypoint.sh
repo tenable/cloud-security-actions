@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ermetic iac scan "$@" --output-file-formats md
+tenable iac scan "$@" --output-file-formats md
 trap "exit $?" EXIT
 
-cat ${ERMETIC_OUTPUT_PATH}/${ERMETIC_OUTPUT_FILE_NAME}.md >> "$GITHUB_STEP_SUMMARY"
+cat ${TENABLE_OUTPUT_PATH}/${TENABLE_OUTPUT_FILE_NAME}.md >> "$GITHUB_STEP_SUMMARY"
