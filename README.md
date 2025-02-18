@@ -4,7 +4,7 @@
 
 Use the actions below to shift-left and identify issues before resources are deployed.
 
-**[IaC Scan](iac/scan)** - Scan your infrastructure-as-code (IaC) for security issues.
+**[IaC Scan](iac/scan)** - Scan your infrastructure-as-code (IaC) for security issues
 
 **[IaC Sync](iac/sync/terraform)** - Sync the code associated with your cloud resources to trace those resources back to
 their origins (Cloud to Code)
