@@ -1,4 +1,4 @@
-﻿name: 'Tenable Cloud Security Container Scan'
+﻿name: 'Tenable Cloud Security Container Image Scan'
 description: 'Scan Container Image'
 branding:
   color: 'blue'
@@ -54,6 +54,9 @@ inputs:
     default: 'results'
     description: ''
     required: false
+  output-junit-test-name-prefix:
+    description: ''
+    required: false
   output-path:
     default: '.'
     description: ''
@@ -96,6 +99,8 @@ runs:
     - ${{ inputs.min-cvss-score }}
     - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
     - ${{ inputs.output-file-formats }}
+    - ${{ inputs.output-junit-test-name-prefix &&  '--output-junit-test-name-prefix'}}
+    - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.registry-password &&  '--registry-password'}}
     - ${{ inputs.registry-password }}
     - ${{ inputs.registry-username &&  '--registry-username'}}
