@@ -52,18 +52,13 @@ inputs:
     description: ''
     required: false
   output-junit-test-name-prefix:
-      default: ''
-      description: ''
-      required: false
+    description: ''
+    required: false
   output-path:
     default: '.'
     description: ''
     required: false
   path:
-    description: ''
-    required: false
-  paths:
-    deprecationMessage: 'Use `path` instead'
     description: ''
     required: false
   pipeline-run-id:
@@ -93,10 +88,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.api-token && '--api-token'}}
-    - ${{ inputs.api-token }}
-    - ${{ inputs.api-url &&  '--api-url'}}
-    - ${{ inputs.api-url }}
     - ${{ inputs.exclude-paths &&  '--exclude-paths'}}
     - ${{ inputs.exclude-paths }}
     - ${{ inputs.exclude-policies &&  '--exclude-policies'}}
@@ -104,28 +95,25 @@ runs:
     - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
     - ${{ inputs.fail-on-min-severity }}
     - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
-    - ${{ inputs.min-severity &&  '--min-severity'}}
-    - ${{ inputs.min-severity }}
     - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
     - ${{ inputs.output-file-formats }}
-    - ${{ inputs.output-file-name &&  '--output-file-name'}}
-    - ${{ inputs.output-file-name }}
     - ${{ inputs.output-junit-test-name-prefix &&  '--output-junit-test-name-prefix'}}
     - ${{ inputs.output-junit-test-name-prefix }}
-    - ${{ inputs.output-path &&  '--output-path'}}
-    - ${{ inputs.output-path }}
-    - ${{ inputs.path && '--path' || inputs.paths && '--path'}}
-    - ${{ inputs.path || inputs.paths }}
+    - ${{ inputs.path &&  '--path' }}
+    - ${{ inputs.path }}
     - ${{ inputs.policies &&  '--policies'}}
     - ${{ inputs.policies }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
     - ${{ inputs.types && '--types'}}
     - ${{ inputs.types }}
   env:
+    TENABLE_API_TOKEN: ${{ inputs.api-token }}
+    TENABLE_API_URL: ${{ inputs.api-url }}
     TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
     TENABLE_CODE_COMMIT_HASH: ${{ inputs.code-commit-hash }}
     TENABLE_CODE_COMMIT_USER: ${{ inputs.code-commit-user }}
     TENABLE_CODE_REPOSITORY_URL: ${{ inputs.code-repository-url }}
+    TENABLE_MIN_SEVERITY: ${{ inputs.min-severity }}
     TENABLE_OUTPUT_FILE_NAME: ${{ inputs.output-file-name }}
     TENABLE_OUTPUT_PATH: ${{ inputs.output-path }}
     TENABLE_PIPELINE_RUN_ID: ${{ inputs.pipeline-run-id }}
