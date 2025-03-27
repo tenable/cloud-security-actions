@@ -83,8 +83,8 @@ inputs:
     default: 'false'
     description: ''
     required: false
-  summary:
-    default: 'true'
+  skip-summary:
+    default: 'false'
     description: ''
     required: false
 
@@ -112,7 +112,7 @@ runs:
     - ${{ inputs.registry-username }}
     - ${{ inputs.silent != 'false' &&  '--silent' || ''}}
   env:
-    SUMMARY: ${{ inputs.summary }}
+    SKIP_SUMMARY: ${{ inputs.skip-summary }}
     TENABLE_API_TOKEN: ${{ inputs.api-token }}
     TENABLE_API_URL: ${{ inputs.api-url }}
     TENABLE_CODE_BRANCH: ${{ inputs.code-branch }}
