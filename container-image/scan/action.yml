@@ -30,6 +30,12 @@ inputs:
     default: ${{ github.server_url }}/${{ github.repository }}
     description: ''
     required: false
+  exclude-paths:
+    description: ''
+    required: false
+  exclude-vulnerabilities:
+    description: ''
+    required: false  
   fail-on-min-severity:
     description: ''
     required: false
@@ -95,6 +101,10 @@ runs:
   args:
     - ${{ inputs.name && '--name'}}
     - ${{ inputs.name }}
+    - ${{ inputs.exclude-paths &&  '--exclude-paths'}}
+    - ${{ inputs.exclude-paths }}
+    - ${{ inputs.exclude-vulnerabilities &&  '--exclude-vulnerabilities'}}
+    - ${{ inputs.exclude-vulnerabilities }}
     - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
     - ${{ inputs.fail-on-min-severity }}
     - ${{ inputs.fail-on-min-cvss-score &&  '--fail-on-min-cvss-score'}}
