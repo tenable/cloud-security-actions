@@ -27,6 +27,9 @@ inputs:
     default: ${{ github.server_url }}/${{ github.repository }}
     description: ''
     required: false
+  git-tokens:
+    description: ''
+    required: false
   logs:
     default: 'false'
     description: ''
@@ -62,6 +65,8 @@ runs:
     - iac
     - sync
     - terraform
+    - ${{ inputs.git-tokens &&  '--git-tokens'}}
+    - ${{ inputs.git-tokens }}
     - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
     - ${{ inputs.path &&  '--path'}}
     - ${{ inputs.path }}
